@@ -14,10 +14,12 @@ main(int argc, char* argv[])
     //
     // These all work (no warnings).
     //
+
     printf("\\a: '\a'\n");
     printf("\\b: '\b'\n");
     printf("\\e: '\e'\n");
     printf("\\f: '\f'\n");
+    printf("\\n: '\n'\n");
     printf("\\t: '\t'\n");
     printf("\\v: '\v'\n");
     printf("\\E: '\E'\n");
@@ -42,7 +44,6 @@ main(int argc, char* argv[])
     printf("\\k: '\k'\n");
     printf("\\l: '\l'\n");
     printf("\\m: '\m'\n");
-    printf("\\n: '\n'\n");
     printf("\\o: '\o'\n");
     printf("\\p: '\p'\n");
     printf("\\q: '\q'\n");
