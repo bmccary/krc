@@ -20,6 +20,7 @@ main(int argc, char* argv[])
     printf("\\e: '\e'\n");
     printf("\\f: '\f'\n");
     printf("\\n: '\n'\n");
+    printf("\\r: '\r'\n");
     printf("\\t: '\t'\n");
     printf("\\v: '\v'\n");
     printf("\\E: '\E'\n");
@@ -47,7 +48,6 @@ main(int argc, char* argv[])
     printf("\\o: '\o'\n");
     printf("\\p: '\p'\n");
     printf("\\q: '\q'\n");
-    printf("\\r: '\r'\n");
     printf("\\s: '\s'\n");
     printf("\\w: '\w'\n");
     printf("\\y: '\y'\n");
