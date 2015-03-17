@@ -19,10 +19,15 @@ main(int argc, char* argv[])
 
     int freq[MAXSZ];
 
-    for (int i = 0; i < MAXSZ; ++i)
+    for (int i = 1; i < MAXSZ; ++i)
         freq[i] = 0;
 
     int n = 0;
+
+    //
+    // Calculate frequency table.
+    // NOTE: freq[0] is undefined.
+    //
 
     while ((c = getchar()) != EOF)
         switch (c)
@@ -66,6 +71,8 @@ main(int argc, char* argv[])
         printf("\n");
     }
 
+    printf("\n\n");
+
     //
     // Vertically-oriented histogram.
     //
@@ -73,8 +80,6 @@ main(int argc, char* argv[])
     int maxfreq = 0;
     for (int i = 1; i < MAXSZ; ++i)
         maxfreq = maxfreq < freq[i] ? freq[i] : maxfreq;
-
-    printf("\n\n");
 
     for (int i = maxfreq; i > 0; --i)
     {
