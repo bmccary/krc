@@ -20,9 +20,9 @@ main(int argc, char* argv[])
 
     while ((c = getchar()) != EOF)
     {
-        if (c == ' ' || c == '\n' || c == '\t')
+        if (' ' == c || '\n' == c || '\t' == c)
         {
-            if (state == IN)
+            if (IN == state)
                 putchar('\n');
 
             state = OUT;

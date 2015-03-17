@@ -25,12 +25,12 @@ main(int argc, char* argv[])
     {
         ++nc;
 
-        if (c == '\n')
+        if ('\n' == c)
             ++nl;
 
-        if (c == ' ' || c == '\n' || c == '\t')
+        if (' ' == c || '\n' == c || '\t' == c)
             state = OUT;
-        else if (state == OUT)
+        else if (OUT == state)
         {
             state = IN;
             ++nw;

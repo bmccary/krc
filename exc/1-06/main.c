@@ -16,7 +16,7 @@ main(int argc, char* argv[])
         c = (getchar() != EOF);
         printf("%d\n", c);
     } 
-    while(c);
+    while (c);
 
     return 0;
 }

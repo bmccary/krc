@@ -17,9 +17,9 @@ main(int argc, char* argv[])
     {
         putchar(c);
 
-        if (c == ' ')
+        if (' ' == c)
         {
-            while ((c = getchar()) != EOF && c == ' ')
+            while ((c = getchar()) != EOF && ' ' == c)
                 ;
 
             putchar(c);

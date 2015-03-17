@@ -66,7 +66,7 @@ main(int argc, char* argv[])
     for (int i = 1; i < MAXSZ; ++i)
     {
         printf("%2d|", i);
-        for(int j = 0; j < freq[i]; ++j)
+        for (int j = 0; j < freq[i]; ++j)
             printf("%c", MARK);
         printf("\n");
     }
