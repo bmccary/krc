@@ -21,21 +21,21 @@ main(int argc, char* argv[])
 
     int state = OUT;
 
-    while ((c = getchar()) != EOF)
-    {
-        ++nc;
-
-        if ('\n' == c)
-            ++nl;
-
-        if (' ' == c || '\n' == c || '\t' == c)
-            state = OUT;
-        else if (OUT == state)
+    for ( ; (c = getchar()) != EOF; ++nc)
+        switch (c)
         {
-            state = IN;
-            ++nw;
+            case '\n': ++nl;
+            case '\t':
+            case ' ':
+                state = OUT;
+                break;
+            
+            default:
+                if (OUT == state)
+                    ++nw;
+
+                state = IN;
         }
-    }
 
     printf("%d %d %d\n", nl, nw, nc);
 

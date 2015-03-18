@@ -7,6 +7,6 @@ all: main
 clean:
 	rm -f main
 
-main.c.hist: main.c main
-	./main < $< > $@
+test:
+	echo "Nothing to test."
 

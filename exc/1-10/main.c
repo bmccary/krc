@@ -4,8 +4,8 @@
 
 Write a program to copy its input its output,
 replacing each tab by \t, each backspace by \b, and
-each backslash by \\.  by a single blank. This makes
-tabs and backspaces visible in an unambiguous way.
+each backslash by \\. This makes tabs and backspaces 
+visible in an unambiguous way.
 
 #endif
 

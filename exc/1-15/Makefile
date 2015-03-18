@@ -7,3 +7,6 @@ all: main
 clean:
 	rm -f main
 
+test:
+	echo "Nothing to test."
+

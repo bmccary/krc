@@ -11,20 +11,12 @@ by a single blank.
 int
 main(int argc, char* argv[])
 {
-    int c = 0;
+    int c0 = 0;
+    int c1 = 0;
 
-    while ((c = getchar()) != EOF)
-    {
-        putchar(c);
-
-        if (' ' == c)
-        {
-            while ((c = getchar()) != EOF && ' ' == c)
-                ;
-
-            putchar(c);
-        }
-    }
+    for ( ; (c1 = getchar()) != EOF; c0 = c1)
+        if (' ' != c0 || ' ' != c1)
+            putchar(c1);
 
     return 0;
 }
