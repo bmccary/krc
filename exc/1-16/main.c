@@ -63,10 +63,7 @@ main(int argc, char* argv[])
     char longest[MAXLINE];
 
     for (int i = 0; i < MAXLINE; ++i)
-    {
-        line[i] = '\0';
-        longest[i] = '\0';
-    }
+        line[i] = longest[i] = '\0';
 
     while ((len = getline(line, MAXLINE)) > -1)
         if (len > max)
