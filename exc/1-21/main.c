@@ -18,18 +18,20 @@ getline(char s[], int lim)
 {
     int c = 0;
     int i = 0;
-    
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        s[i] = c;
 
-    if ('\n' == c)
-        s[i++] = c;
+    lim = lim > 0 ? lim - 1 : 0;
+
+    for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
 
     s[i] = '\0';
 
-    if (c != '\n' && lim - 1 == i)
+    if ('\n' != c)
         for ( ; (c = getchar()) != EOF && c != '\n'; ++i)
             ;
+
+    if (0 == i && EOF == c)
+        return -1;
 
     return i;
 }
@@ -44,7 +46,12 @@ entab(char s[], char t[])
     int c0 = 0;
     int c1 = 0;
 
-    for ( ; s[i]; ++i)
+    int n = 0;
+
+    for ( ; s[n] ; ++n)
+        ;
+
+    for ( ; i <= n; ++i)
         switch (s[i])
         {
             //
@@ -65,7 +72,7 @@ entab(char s[], char t[])
 
             default:
            
-                // Flush WS. 
+                // Tabs. 
                 while (1)
                 {
                     k = TS - (c0 % TS);
@@ -76,16 +83,16 @@ entab(char s[], char t[])
                     c0 += k;
                 }
 
+                // Spaces.
                 for ( ; c0 < c1; ++c0)
                     t[j++] = ' ';
 
                 // Copy.
-                c0 = ++c1;
-
                 t[j++] = s[i];
-        }
 
-    t[j] = '\0';
+                // Align column markers.
+                c0 = ++c1;
+        }
 
     return j;
 }
@@ -97,10 +104,13 @@ main(int argc, char* argv[])
     char line0[MAXLINE];
     char line1[MAXLINE];
 
-    while ((len = getline(line0, MAXLINE)) > 0)
+    for (int i = 0; i < MAXLINE; ++i)
+        line0[i] = line1[i] = '\0';
+
+    while ((len = getline(line0, MAXLINE)) > -1)
     {
         entab(line0, line1);
-        printf("%s", line1);
+        printf("%s\n", line1);
     }
 
     return 0;

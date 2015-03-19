@@ -1,6 +1,6 @@
 
 SHELL := /bin/bash
-CC    := /usr/bin/gcc -Wall -std=c99
+CC    := /usr/bin/gcc -Wall -pedantic -std=c99
 
 all: main
 

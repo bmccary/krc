@@ -14,18 +14,20 @@ getline(char s[], int lim)
 {
     int c = 0;
     int i = 0;
-    
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        s[i] = c;
 
-    if ('\n' == c)
-        s[i++] = c;
+    lim = lim > 0 ? lim - 1 : 0;
+
+    for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
 
     s[i] = '\0';
 
-    if (c != '\n' && lim - 1 == i)
+    if ('\n' != c)
         for ( ; (c = getchar()) != EOF && c != '\n'; ++i)
             ;
+
+    if (0 == i && EOF == c)
+        return -1;
 
     return i;
 }
@@ -33,18 +35,13 @@ getline(char s[], int lim)
 int
 trimr(char s[], int len)
 {
-    int i = len; // \0
-    --i;         // \n
-    --i;         // ?
-
-    for ( ; i >= 0; --i)
+    for (int i = len - 1; i >= 0; --i)
         switch (s[i])
         {
             case ' ':
             case '\t':
                 break;
             default:
-                s[++i] = '\n';
                 s[++i] = '\0';
                 return i;
         }
@@ -60,9 +57,9 @@ main(int argc, char* argv[])
     int len = 0;
     char line[MAXLINE];
 
-    while ((len = getline(line, MAXLINE)) > 0)
+    while ((len = getline(line, MAXLINE)) > -1)
         if (len < MAXLINE && (len = trimr(line, len)) > 0)
-            printf("%s", line);
+            printf("%s\n", line);
 
     return 0;
 }

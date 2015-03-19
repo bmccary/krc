@@ -15,18 +15,20 @@ getline(char s[], int lim)
 {
     int c = 0;
     int i = 0;
-    
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-        s[i] = c;
 
-    if ('\n' == c)
-        s[i++] = c;
+    lim = lim > 0 ? lim - 1 : 0;
+
+    for (i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
 
     s[i] = '\0';
 
-    if (c != '\n' && lim - 1 == i)
+    if ('\n' != c)
         for ( ; (c = getchar()) != EOF && c != '\n'; ++i)
             ;
+
+    if (0 == i && EOF == c)
+        return -1;
 
     return i;
 }
@@ -40,7 +42,6 @@ reverse(char s[])
         ;
 
     --i; // \0
-    --i; // \n
 
     int j = 0;
 
@@ -62,9 +63,9 @@ main(int argc, char* argv[])
     int len = 0;
     char line[MAXLINE];
 
-    while ((len = getline(line, MAXLINE)) > 0)
+    while ((len = getline(line, MAXLINE)) > -1)
         if (len < MAXLINE)
-            printf("%s", reverse(line));
+            printf("%s\n", reverse(line));
 
     return 0;
 }

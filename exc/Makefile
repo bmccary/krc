@@ -9,7 +9,10 @@ all: $(DIRS)
 clean:
 	for d in $(DIRS); \
 	do \
-		$(MAKE) -C $$d clean; \
+		if [ -f $$d/Makefile ]; \
+		then \
+			$(MAKE) -C $$d clean; \
+		fi; \
 	done
 
 $(DIRS):
@@ -21,6 +24,9 @@ $(DIRS):
 test:
 	for d in $(DIRS); \
 	do \
-		$(MAKE) -C $$d test; \
+		if [ -f $$d/Makefile ]; \
+		then \
+			$(MAKE) -C $$d test; \
+		fi; \
 	done
 	
